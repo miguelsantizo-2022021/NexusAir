@@ -9,8 +9,7 @@ import java.util.List;
 public interface EmpleadoService {
     List<Empleado> getAllEmpleados();
     Empleado getEmpleadoById(Integer id);
-    Empleado saveEmpleado (Empleado empleado) throws RuntimeException;
+    Empleado saveEmpleado(Empleado empleado) throws RuntimeException;
     Empleado updateEmpleado(Integer id, Empleado empleado);
     void deleteEmpleado(Integer id);
-
 }
