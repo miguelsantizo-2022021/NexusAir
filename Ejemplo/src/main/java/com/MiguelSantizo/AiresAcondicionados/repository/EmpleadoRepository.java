@@ -1,6 +1,6 @@
 package com.MiguelSantizo.AiresAcondicionados.repository;
 
-import com.MiguelSantizo.AiresAcondicionados.model.Empleado;
+import com.MiguelSantizo.AiresAcondicionados.Entity.Empleado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

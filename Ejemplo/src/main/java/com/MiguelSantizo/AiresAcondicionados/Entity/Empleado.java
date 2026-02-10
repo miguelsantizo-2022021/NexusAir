@@ -1,4 +1,4 @@
-package com.MiguelSantizo.AiresAcondicionados.model;
+package com.MiguelSantizo.AiresAcondicionados.Entity;
 
 import jakarta.persistence.*;
 

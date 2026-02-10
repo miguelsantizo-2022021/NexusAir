@@ -1,6 +1,6 @@
 package com.MiguelSantizo.AiresAcondicionados.service;
 
-import com.MiguelSantizo.AiresAcondicionados.model.Empleado;
+import com.MiguelSantizo.AiresAcondicionados.Entity.Empleado;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
