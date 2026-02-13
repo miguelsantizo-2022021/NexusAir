@@ -1,6 +1,6 @@
 package com.MiguelSantizo.AiresAcondicionados.controller;
 
-import com.MiguelSantizo.AiresAcondicionados.Entity.Proveedor;
+import com.MiguelSantizo.AiresAcondicionados.entity.Proveedor;
 import com.MiguelSantizo.AiresAcondicionados.service.ProveedorService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.MiguelSantizo.AiresAcondicionados.repository;
 
-import com.MiguelSantizo.AiresAcondicionados.Entity.Proveedor;
+import com.MiguelSantizo.AiresAcondicionados.entity.Proveedor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

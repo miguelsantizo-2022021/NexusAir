@@ -1,6 +1,6 @@
 package com.MiguelSantizo.AiresAcondicionados.service;
 
-import com.MiguelSantizo.AiresAcondicionados.Entity.Proveedor;
+import com.MiguelSantizo.AiresAcondicionados.entity.Proveedor;
 import com.MiguelSantizo.AiresAcondicionados.repository.ProveedorRepository;
 import org.springframework.stereotype.Service;
 
