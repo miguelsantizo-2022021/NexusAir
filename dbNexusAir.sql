@@ -2,10 +2,6 @@ drop database if exists dbnexus_air_in5cm;
 create database dbnexus_air_in5cm;
 use dbnexus_air_in5cm;
 
--- =============================================
--- estructura de tablas
--- =============================================
-
 create table proveedores(
     id_proveedor int auto_increment not null,
     nombre_proveedor varchar(60) not null,
@@ -31,7 +27,7 @@ create table productos(
     categoria enum('calefactor', 'aire acondicionado') not null,
     precio_compra double not null,
     precio_venta double not null,
-    stock int not null, 
+    stock int not null,
     id_proveedor int not null,
     primary key pk_id_producto(id_producto),
     constraint fk_producto_proveedor foreign key (id_proveedor)
@@ -53,10 +49,10 @@ create table ventas(
 );
 
 -- =============================================
--- procedimientos almacenados
+-- Procedimientos almacenados
 -- =============================================
 
--- crear proveedor
+-- Crear proveedor
 delimiter $$
 create procedure sp_agregarproveedor(
     in _nombre varchar(60), in _tel int, in _dir varchar(100), in _email varchar(100)
@@ -67,7 +63,7 @@ begin
 end $$
 delimiter ;
 
--- crear empleado
+-- Crear empleado
 delimiter $$
 create procedure sp_agregarempleado(
     in _nombre varchar(60), in _apellido varchar(60), in _puesto varchar(20), in _email varchar(100)
@@ -78,7 +74,7 @@ begin
 end $$
 delimiter ;
 
--- crear producto
+-- Crear producto
 delimiter $$
 create procedure sp_agregarproducto(
     in _nombre varchar(60), in _modelo varchar(50), in _cat enum('calefactor', 'aire acondicionado'),
@@ -92,7 +88,7 @@ begin
 end $$
 delimiter ;
 
--- crear venta
+-- Crear venta
 delimiter $$
 create procedure sp_registrarventa(
     in _fecha date, in _cantidad int, in _total double, in _id_emp int, in _id_prod int
@@ -103,7 +99,7 @@ begin
 end $$
 delimiter ;
 
--- listar proveedores
+-- Listar proveedores
 delimiter $$
 create procedure sp_listarproveedores()
 begin
@@ -111,7 +107,7 @@ begin
 end $$
 delimiter ;
 
--- listar empleados
+-- Listar empleados
 delimiter $$
 create procedure sp_listarempleados()
 begin
@@ -119,32 +115,56 @@ begin
 end $$
 delimiter ;
 
--- listar productos
+-- Listar productos
 delimiter $$
 create procedure sp_listarproductos()
 begin
-    select p.*, prov.nombre_proveedor 
-    from productos p 
+    select p.*, prov.nombre_proveedor
+    from productos p
     inner join proveedores prov on p.id_proveedor = prov.id_proveedor;
 end $$
 delimiter ;
 
--- actualizar producto
+-- Actualizar empleado
+delimiter $$
+create procedure sp_actualizarempleado(
+    in _id int, in _nombre varchar(60), in _apellido varchar(60), in _puesto varchar(20), in _email varchar(100)
+)
+begin
+    update empleados
+    set
+        nombre_empleado = coalesce(_nombre, nombre_empleado),
+        apellido_empleado = coalesce(_apellido, apellido_empleado),
+        puesto_empleado = coalesce(_puesto, puesto_empleado),
+        email_empleado = coalesce(_email, email_empleado)
+    where id_empleado = _id;
+end $$
+delimiter ;
+
+-- Eliminar empleado
+delimiter $$
+create procedure sp_eliminarempleado(in _id int)
+begin
+    delete from empleados where id_empleado = _id;
+end $$
+delimiter ;
+
+-- Actualizar producto
 delimiter $$
 create procedure sp_actualizarproducto(
     in _id int, in _nuevo_nombre varchar(60), in _nuevo_precio double, in _nuevo_stock int
 )
 begin
-    update productos 
-    set 
-        nombre_producto = coalesce(_nuevo_nombre, nombre_producto), 
-        precio_venta = coalesce(_nuevo_precio, precio_venta), 
+    update productos
+    set
+        nombre_producto = coalesce(_nuevo_nombre, nombre_producto),
+        precio_venta = coalesce(_nuevo_precio, precio_venta),
         stock = coalesce(_nuevo_stock, stock)
     where id_producto = _id;
 end $$
 delimiter ;
 
--- borrar producto
+-- Borrar producto
 delimiter $$
 create procedure sp_eliminarproducto(in _id int)
 begin
@@ -153,7 +173,7 @@ end $$
 delimiter ;
 
 -- =============================================
--- carga de datos
+-- Carga de datos
 -- =============================================
 
 call sp_agregarproveedor('carrier global', 5551010, 'florida, usa', 'ventas@carrier.com');
